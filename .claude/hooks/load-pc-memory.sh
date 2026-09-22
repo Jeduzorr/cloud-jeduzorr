@@ -13,6 +13,11 @@ else
   git clone -q --depth 1 "$URL" "$DIR" 2>/dev/null
 fi
 
+if [ -d "$DIR/.git" ] && [ -z "$(find "$DIR/pc" -type f ! -name .gitkeep 2>/dev/null)" ]; then
+  echo "# Mémoire PC vide : le PC n'a encore rien synchronisé dans Jeduzorr/claude-memory/pc/."
+  exit 0
+fi
+
 if [ ! -d "$DIR/pc" ]; then
   cat <<'EOF'
 # ⚠️ Mémoire PC non chargée

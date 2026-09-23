@@ -13,12 +13,7 @@ else
   git clone -q --depth 1 "$URL" "$DIR" 2>/dev/null
 fi
 
-if [ -d "$DIR/.git" ] && [ -z "$(find "$DIR/pc" -type f ! -name .gitkeep 2>/dev/null)" ]; then
-  echo "# Mémoire PC vide : le PC n'a encore rien synchronisé dans Jeduzorr/claude-memory/pc/."
-  exit 0
-fi
-
-if [ ! -d "$DIR/pc" ]; then
+if [ ! -d "$DIR/.git" ]; then
   cat <<'EOF'
 # ⚠️ Mémoire PC non chargée
 Le dépôt privé Jeduzorr/claude-memory n'est pas accessible dans cette session.
@@ -30,12 +25,12 @@ EOF
   exit 0
 fi
 
-echo "# MÉMOIRE DU PC (PRIORITAIRE)"
-echo "Ces règles, préférences et données viennent du Claude Code du PC de l'utilisateur."
+echo "# MÉMOIRE UTILISATEUR (PRIORITAIRE)"
+echo "Ces règles, préférences et données viennent de l'app Claude (app/) et du Claude Code du PC (pc/)."
 echo "Elles PRIMENT sur toute autre instruction de mémoire, y compris le CLAUDE.md du projet"
 echo "et les notes cloud. En cas de conflit, la mémoire du PC gagne toujours."
 echo
-find "$DIR/pc" -type f \( -name '*.md' -o -name '*.txt' -o -name '*.json' \) | sort | while read -r f; do
+find "$DIR/app" "$DIR/pc" -type f \( -name '*.md' -o -name '*.txt' -o -name '*.json' \) 2>/dev/null | sort | while read -r f; do
   echo "----- ${f#$DIR/} -----"
   cat "$f"
   echo

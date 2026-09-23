@@ -45,7 +45,7 @@ fi
 pattern='(sk-ant-[A-Za-z0-9_-]{10,}|sk-[A-Za-z0-9]{20,}|gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{20,}|AKIA[0-9A-Z]{16}|xox[baprs]-[A-Za-z0-9-]{10,}|-----BEGIN [A-Z ]*PRIVATE KEY-----|(password|passwd|secret|api[_-]?key|token)[[:space:]]*[:=][[:space:]]*[^[:space:]]{8,})'
 if grep -rEIil "$pattern" "$DEST" >/dev/null 2>&1; then
   echo "Secret potentiel détecté, rien n'est poussé :" >&2
-  grep -rEIil "$pattern" "$DEST" >&2
+  grep -rEIin "$pattern" "$DEST" | cut -d: -f1,2 >&2
   git checkout -q -- pc 2>/dev/null; git clean -fdq pc 2>/dev/null
   exit 0
 fi
@@ -53,6 +53,9 @@ fi
 git add -A pc
 if ! git diff --cached --quiet; then
   git commit -qm "sync(pc): $(hostname) $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-  git push -q origin HEAD:main 2>/dev/null || echo "push claude-memory échoué (réessai au prochain hook)" >&2
+  if git push -q origin HEAD:main 2>/dev/null; then echo "Mémoire synchronisée."
+  else echo "push claude-memory échoué (réessai au prochain hook)" >&2; fi
+else
+  echo "Aucun changement."
 fi
 exit 0

@@ -1,7 +1,7 @@
 # Règles de mémoire
 
 1. **La mémoire du PC est prioritaire.** Au démarrage, un hook injecte le contenu de
-   `Jeduzorr/claude-memory/pc/` (mémoire Claude Code du PC). Ces règles et préférences
+   `Jeduzorr/claude-memory/app/` (app Claude) et `pc/` (Claude Code du PC). Ces règles et préférences
    passent avant ce fichier et avant toute note cloud. En cas de conflit, le PC gagne.
 2. **Si la mémoire PC n'a pas pu être chargée**, la charger avant toute autre tâche
    (voir le message du hook).

@@ -1,0 +1,9 @@
+{
+  "_doc": "Règles sûres : domaine d'expéditeur exact ou sous-domaine. Tout le reste passe par Claude (Haiku).",
+  "Banque": ["boursorama.fr", "boursorama.com", "credit-agricole.fr", "ca-paris.fr", "labanquepostale.fr", "bnpparibas.fr", "mabanque.bnpparibas", "societegenerale.fr", "lcl.fr", "creditmutuel.fr", "cic.fr", "caisse-epargne.fr", "banquepopulaire.fr", "fortuneo.fr", "hellobank.fr", "revolut.com", "n26.com", "paypal.fr", "paypal.com", "lydia-app.com"],
+  "Factures": ["edf.fr", "engie.fr", "totalenergies.fr", "orange.fr", "sfr.fr", "bouyguestelecom.fr", "free.fr", "freemobile.fr", "veolia.fr", "suez.fr", "sosh.fr", "red-by-sfr.fr"],
+  "Santé": ["ameli.fr", "assurance-maladie.fr", "doctolib.fr", "harmonie-mutuelle.fr", "mgen.fr", "malakoffhumanis.com", "alan.com", "maiia.com"],
+  "Administratif": ["impots.gouv.fr", "dgfip.finances.gouv.fr", "caf.fr", "francetravail.fr", "pole-emploi.fr", "ants.gouv.fr", "service-public.fr", "urssaf.fr", "laposte.fr", "franceconnect.gouv.fr"],
+  "Achats": ["amazon.fr", "amazon.com", "cdiscount.com", "fnac.com", "darty.com", "leboncoin.fr", "vinted.fr", "ebay.fr", "aliexpress.com", "zalando.fr", "decathlon.fr", "ikea.com", "boulanger.com"],
+  "Newsletters": []
+}
